@@ -1,1 +1,1 @@
-# devConnector
+# devConnector project in MERN
