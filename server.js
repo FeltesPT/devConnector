@@ -1,17 +1,23 @@
-const express = require("express");
-const mongoose = require("mongoose");
+import express from "express";
+import mongoose from "mongoose";
+import { urlencoded, json } from "body-parser";
 
-const auth = require("./routes/api/auth");
-const profile = require("./routes/api/profile");
-const posts = require("./routes/api/posts");
+import auth from "./routes/api/auth";
+import profile from "./routes/api/profile";
+import posts from "./routes/api/posts";
 
 const app = express();
+
+// Body Parser Middleware
+app.use(urlencoded({ extended: false }));
+app.use(json());
+
 // DB Config
-const db = require("./config/keys").mongoURI;
+import { mongoURI as db } from "./config/keys";
 
 // Connect to MongoDB
 mongoose
-	.connect(db)
+	.connect(db, { useNewUrlParser: true })
 	.then(() => console.log("MongoDB Connect"))
 	.catch(err => console.log(err));
 

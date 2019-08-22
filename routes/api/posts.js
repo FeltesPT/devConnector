@@ -1,5 +1,5 @@
-const express = require("express");
-const router = express.Router();
+import { Router } from "express";
+const router = Router();
 
 // @route   GET api/posts/test
 // @desc    Tests posts route
@@ -10,4 +10,4 @@ router.get("/test", (req, res) =>
 	})
 );
 
-module.exports = router;
+export default router;
